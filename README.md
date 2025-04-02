@@ -24,7 +24,7 @@ This project follows my YouTube series, **"Budget-Friendly Home Lab,"** where ea
 
 ## 🎥 Watch the Full Lab Series
 
-▶️ [Budget-Friendly Home Lab Series on YouTube](https://www.youtube.com/@YourChannelLink)
+▶️ [Budget-Friendly Home Lab Series on YouTube](https://www.youtube.com/@aaronthesloth3428)
 
 ## 📺 Episode Guide
 

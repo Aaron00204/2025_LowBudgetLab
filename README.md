@@ -33,7 +33,7 @@ This project follows my YouTube series, **"Budget-Friendly Home Lab,"** where ea
 | Ep 1   | Lab Overview & Roadmap        | Intro to the lab goals    |
 | Ep 2   | Deploying pfSense Firewall    | Network perimeter setup   |
 | Ep 3   | Installing Windows Server 2019| Lays groundwork for AD    |
-| Ep 4   | Active Directory & DNS Setup  | Promoting to Domain Ctrlr |
+| Ep 4   | AD setup, users, groups, & .. | Promoting to Domain Ctrlr |
 | Ep 5   | Deploying Wazuh SIEM          | SOC-style monitoring      |
 | Ep 6   | Adding Windows/Linux Clients  | Test endpoints            |
 | Ep 7   | Wazuh Agent Deployment        | Endpoint telemetry        |

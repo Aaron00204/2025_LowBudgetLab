@@ -58,6 +58,26 @@ This repository will be updated with:
 - `/configs/` – Sample configurations (pfSense, AD DS, Wazuh, etc.)
 - `/scripts/` – Any automation or helper scripts
 
+## Diagram
+https://github.com/Aaron00204/2025_LowBudgetLab/blob/main/slothlab_diagram.png
+
+##Inventory
+## Host Machine
+ADLTS001 - Windows 10 - Host Machine running VirtualBox, manages the lab environment
+## Internal Network
+FWLin001 - Linux (pfSense) - Firewall managing traffic between Internal, External, and Isolated networks - 192.168.10.1
+SIEMLin001 - Linux (Wazuh) - SIEM Server collecting logs and analyzing security events - 192.168.10.50
+DCWin001 - Windows Server 2019 - Active Directory Domain Controller managing authentication and group policies - 192.168.10.10
+CLIWin001 - Windows 10 Pro - Domain-Joined Windows Client for Administration - 192.168.10.100
+WRKLin001 - Linux (Ubuntu/Debian) - Domain-Joined Linux Client for User Environment - 192.168.10.101
+WRKWin001 - Windows 10/11 - Domain-Joined Windows Client for User Environment - 192.168.10.102
+## External Network
+ATKKali001 - Linux (Kali) - Offensive Security machine used for penetration testing and vulnerability assessments
+## Isolated Network
+MALWin001 - Windows 10 - Malware Analysis VM used to analyze malware behavior in an isolated environment
+CuckooLin001 - Linux (Ubuntu/Debian) - Cuckoo Sandbox for automated malware analysis
+SIEM-Relay - Linux (Ubuntu/Debian) - Isolated Log Aggregation server that collects logs from malware VMs and forwards to SIEMLin001
+
 ## 📜 License
 
 MIT License — use, modify, and share freely.

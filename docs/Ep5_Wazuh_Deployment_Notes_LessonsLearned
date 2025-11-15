@@ -1,1 +1,60 @@
 
+
+# Wazuh Deployment Notes – SlothLab
+**Date:** November 15, 2025
+
+---
+
+## 🔧 Installation Scripts (Ubuntu 22.04)
+
+```bash
+# Download and run Wazuh installation script (Manager, Indexer, Dashboard)
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+sudo bash wazuh-install.sh -a
+```
+
+## ✅ Post-Install Checklist
+
+- [x] Access dashboard via `https://<server-ip>` (default user: `admin`, password: generated on install)
+- [x] Validate Wazuh services with: `sudo systemctl status wazuh-manager wazuh-dashboard wazuh-indexer`
+- [x] Confirm port access (default: 443 for dashboard, 1514/1515 for agent communication)
+
+## ⚠️ Common Issues and Fixes
+
+### ❌ Wazuh Manager Fails to Start
+
+- **Symptom:** `ossec.log` shows vague XML config error, nothing in `systemctl`
+- **Fix:** Run `xmllint /var/ossec/etc/ossec.conf --noout` to validate syntax
+- **Tip:** Even one bad rule or misplaced tag can cause full failure
+
+### ❌ Custom Rules Break Manager
+
+- **Fix:** Comment out custom rules in `/var/ossec/etc/rules/local_rules.xml` and restart manager  
+- **Prevention:** Validate changes before restart, use `wazuh-logtest` if available
+
+### ❌ Agent Not Showing in Dashboard
+
+- **Fix:** Ensure agent is registered:  
+  ```bash
+  /var/ossec/bin/agent-auth -m <manager-ip> -A <agent-name>
+  ```
+- **Check:** Firewall rules on TCP 1514/1515, confirm `/var/ossec/logs/ossec.log` for registration attempts
+
+## 🧠 Lessons Learned
+
+- Always validate XML files before restarting the manager
+- Keep a backup of working `ossec.conf` and `local_rules.xml` before editing
+- Dashboard may show green even if `wazuh-manager` is down — check service status directly
+- Use `journalctl -u wazuh-manager -e` for deeper error output beyond Wazuh logs
+- Start with built-in rules and tune later — don’t overwhelm the dashboard with noise early on
+
+## 📘 Future Considerations
+
+- Implement centralized logging with rsyslog/syslog-ng feeding into Wazuh
+- Explore integration with MITRE ATT&CK mappings and threat intelligence feeds
+- Document tuning decisions for reproducibility
+
+---
+
+**Maintained by:** Aaron Lopez  
+**Repo:** [2025_LowBudgetLab](https://github.com/Aaron00204/2025_LowBudgetLab)
